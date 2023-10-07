@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lab1.h"
 
 char* allocateString() {
@@ -16,16 +17,14 @@ char* readString(char* fileName) {
 }
 
 char* mysteryExplode(const char* str) {
+    int len = strlen(str);
     char* explodedString = allocateString();
-    int i = 0;
-    int j = 0;
-    while (str[i] != '\0') {
-        if (str[i] != ' ') {
-            explodedString[j] = str[i];
-            j++;
+    int i, j, k = 0;
+    for (i = 0; i < len; i++) {
+        for (j = 0; j <= i-1; j++) {
+            explodedString[k++] = str[j];
         }
-        i++;
     }
-    explodedString[j] = '\0';
+    explodedString[k] = '\0';
     return explodedString;
 }
